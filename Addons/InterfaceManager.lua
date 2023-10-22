@@ -1,12 +1,12 @@
 local httpService = game:GetService("HttpService")
 
 local InterfaceManager = {} do
-	InterfaceManager.Folder = "FluentSettings"
+	InterfaceManager.Folder = "Shijin"
     InterfaceManager.Settings = {
-        Theme = "Dark",
-        Acrylic = true,
+        Theme = "Light",
+        Acrylic = false,
         Transparency = true,
-        MenuKeybind = "LeftControl"
+        MenuKeybind = "Home"
     }
 
     function InterfaceManager:SetFolder(folder)
