@@ -6,7 +6,7 @@ local InterfaceManager = {} do
         Theme = "Darker",
         Acrylic = false,
         Transparency = true,
-        MenuKeybind = "LeftControl"
+        MenuKeybind = "P"
     }
 
     function InterfaceManager:SetFolder(folder)
