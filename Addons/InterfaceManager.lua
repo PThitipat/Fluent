@@ -3,6 +3,7 @@ local httpService = game:GetService("HttpService")
 local InterfaceManager = {} do
 	InterfaceManager.Folder = "EVIL"
     InterfaceManager.Settings = {
+	SubTitle = "by Plxng & Destroy & Complete",
         Theme = "Darker",
         Acrylic = false,
         Transparency = true,
