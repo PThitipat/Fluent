@@ -1,7 +1,7 @@
 local httpService = game:GetService("HttpService")
 
 local InterfaceManager = {} do
-	InterfaceManager.Folder = "EVIL"
+	InterfaceManager.Folder = "ONEBAHT"
     InterfaceManager.Settings = {
 	SubTitle = "by Plxng & Destroy & Complete",
         Theme = "Darker",
