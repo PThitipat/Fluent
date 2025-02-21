@@ -3522,19 +3522,22 @@ local aa = {
                 g:SafeCallback(h.Changed, h.Value)
             end
             
+            local TweenService = game:GetService("TweenService")
+
             function h.Lock(m)
                 if h.Value then
                     h:SetValue(false)
                 end
-            
+
                 if h.LockFrame then
                     h.LockFrame:Destroy()
                 end
-            
+
                 local LockFrame = ai("Frame", {
-                    Size = UDim2.fromScale(1, 1),
-                    Position = UDim2.new(0, 0, 0, 0),
-                    BackgroundTransparency = 0.6,
+                    Size = UDim2.fromScale(0.5, 0.5),
+                    Position = UDim2.fromScale(0.5, 0.5),
+                    AnchorPoint = Vector2.new(0.5, 0.5),
+                    BackgroundTransparency = 1,
                     BackgroundColor3 = Color3.new(0, 0, 0),
                     Parent = i.Frame,
                     ZIndex = 10,
@@ -3552,10 +3555,26 @@ local aa = {
                         ZIndex = 11,
                     }),
                 })
-            
+
                 h.LockFrame = LockFrame
+
+                local TweenInfoLock = TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+                TweenService:Create(LockFrame, TweenInfoLock, {Size = UDim2.fromScale(1, 1), BackgroundTransparency = 0.6}):Play()
             end
             
+            function h.Unlock(m)
+                if h.LockFrame then
+                    local TweenInfoUnlock = TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+                    TweenService:Create(h.LockFrame, TweenInfoUnlock, {Size = UDim2.fromScale(0.5, 0.5), BackgroundTransparency = 1}):Play()
+            
+                    task.delay(0.3, function()
+                        if h.LockFrame then
+                            h.LockFrame:Destroy()
+                            h.LockFrame = nil
+                        end
+                    end)
+                end
+            end            
             
             function h.Destroy(m)
                 i:Destroy()
