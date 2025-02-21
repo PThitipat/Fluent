@@ -3522,17 +3522,25 @@ local aa = {
                 g:SafeCallback(h.Changed, h.Value)
             end
             
-            function h.Lock()
-                if h.Locked then return end
-                h.Locked = true
-                h.LockFrame = ai("Frame", {
+            function h.Lock(m)
+                if h.Value then
+                    h:SetValue(false)
+                end
+            
+                if h.LockFrame then
+                    h.LockFrame:Destroy()
+                end
+            
+                local LockFrame = ai("Frame", {
                     Size = UDim2.fromScale(1, 1),
+                    Position = UDim2.new(0, 0, 0, 0),
                     BackgroundTransparency = 0.6,
                     BackgroundColor3 = Color3.new(0, 0, 0),
                     Parent = i.Frame,
                 }, {
-                    ai("UICorner", {CornerRadius = UDim.new(0, 4)}),
-                    ai("UIBlurEffect", {Size = 10}),
+                    ai("UICorner", {
+                        CornerRadius = UDim.new(0, 4),
+                    }),
                     ai("ImageLabel", {
                         Size = UDim2.fromOffset(24, 24),
                         Position = UDim2.fromScale(0.5, 0.5),
@@ -3541,13 +3549,16 @@ local aa = {
                         BackgroundTransparency = 1,
                     }),
                 })
+            
+                h.LockFrame = LockFrame
             end
             
-            function h.Unlock()
-                if not h.Locked then return end
-                h.Locked = false
-                if h.LockFrame then h.LockFrame:Destroy() h.LockFrame = nil end
-            end
+            function h.Unlock(m)
+                if h.LockFrame then
+                    h.LockFrame:Destroy()
+                    h.LockFrame = nil
+                end
+            end            
             
             function h.Destroy(m)
                 i:Destroy()
