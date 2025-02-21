@@ -96,8 +96,50 @@ function Element:New(Idx, Config)
 		Toggle:SetValue(not Toggle.Value)
 	end)
 
+	
+	function Element:Lock()
+		if Toggle.Value then
+			Toggle:SetValue(false)
+		end
+		
+		if Toggle.LockFrame then
+			Toggle.LockFrame:Destroy()
+		end
+		
+		local LockFrame = New("Frame", {
+			Size = UDim2.fromScale(1, 1),
+			Position = UDim2.new(0, 0, 0, 0),
+			BackgroundTransparency = 0.6,
+			BackgroundColor3 = Color3.new(0, 0, 0),
+			Parent = ToggleFrame.Frame,
+		}, {
+			New("UICorner", {
+				CornerRadius = UDim.new(0, 4),
+			}),
+			New("UIBlurEffect", {
+				Size = 10,
+			}),
+			New("ImageLabel", {
+				Size = UDim2.fromOffset(24, 24),
+				Position = UDim2.fromScale(0.5, 0.5),
+				AnchorPoint = Vector2.new(0.5, 0.5),
+				Image = "http://www.roblox.com/asset/?id=1234567890",
+				BackgroundTransparency = 1,
+			}),
+		})
+		
+		Toggle.LockFrame = LockFrame
+	end
+	
+	function Element:Unlock()
+		if Toggle.LockFrame then
+			Toggle.LockFrame:Destroy()
+			Toggle.LockFrame = nil
+		end
+	end
+	
 	Toggle:SetValue(Toggle.Value)
-
+	
 	Library.Options[Idx] = Toggle
 	return Toggle
 end
