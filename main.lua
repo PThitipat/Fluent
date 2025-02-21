@@ -3537,6 +3537,8 @@ local aa = {
                     BackgroundTransparency = 0.6,
                     BackgroundColor3 = Color3.new(0, 0, 0),
                     Parent = i.Frame,
+                    ZIndex = 10,
+                    Active = true,
                 }, {
                     ai("UICorner", {
                         CornerRadius = UDim.new(0, 4),
@@ -3547,18 +3549,13 @@ local aa = {
                         AnchorPoint = Vector2.new(0.5, 0.5),
                         Image = "http://www.roblox.com/asset/?id=6031082533",
                         BackgroundTransparency = 1,
+                        ZIndex = 11,
                     }),
                 })
             
                 h.LockFrame = LockFrame
             end
             
-            function h.Unlock(m)
-                if h.LockFrame then
-                    h.LockFrame:Destroy()
-                    h.LockFrame = nil
-                end
-            end            
             
             function h.Destroy(m)
                 i:Destroy()
