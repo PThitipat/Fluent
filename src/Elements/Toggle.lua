@@ -97,7 +97,7 @@ function Element:New(Idx, Config)
 	end)
 
 	
-	function Element:Lock()
+	function Toggle:Lock()
 		if Toggle.Value then
 			Toggle:SetValue(false)
 		end
@@ -131,7 +131,7 @@ function Element:New(Idx, Config)
 		Toggle.LockFrame = LockFrame
 	end
 	
-	function Element:Unlock()
+	function Toggle:Unlock()
 		if Toggle.LockFrame then
 			Toggle.LockFrame:Destroy()
 			Toggle.LockFrame = nil
@@ -139,7 +139,7 @@ function Element:New(Idx, Config)
 	end
 	
 	Toggle:SetValue(Toggle.Value)
-	
+
 	Library.Options[Idx] = Toggle
 	return Toggle
 end
