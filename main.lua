@@ -3545,7 +3545,7 @@ local aa = {
                         Size = UDim2.fromOffset(24, 24),
                         Position = UDim2.fromScale(0.5, 0.5),
                         AnchorPoint = Vector2.new(0.5, 0.5),
-                        Image = "http://www.roblox.com/asset/?id=1234567890",
+                        Image = "http://www.roblox.com/asset/?id=6031082533",
                         BackgroundTransparency = 1,
                     }),
                 })
